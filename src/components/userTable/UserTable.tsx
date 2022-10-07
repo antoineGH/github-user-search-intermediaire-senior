@@ -1,6 +1,6 @@
 import { UserCard } from '../userCard/UserCard'
 
-export const UserTable = () => {
+export const UserTable = (): JSX.Element => {
 	return (
 		<>
 			<p>UserTable</p>

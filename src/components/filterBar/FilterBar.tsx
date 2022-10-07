@@ -1,3 +1,3 @@
-export const FilterBar = () => {
+export const FilterBar = (): JSX.Element => {
 	return <p>FilterBar</p>
 }

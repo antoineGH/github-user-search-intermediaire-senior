@@ -1,7 +1,7 @@
 import React from 'react'
-import './App.css'
 import { TopBar } from './components/topBar/TopBar'
 import { UserTable } from './components/userTable/UserTable'
+import './App.css'
 
 function App() {
 	return (

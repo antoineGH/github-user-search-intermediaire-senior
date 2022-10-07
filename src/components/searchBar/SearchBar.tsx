@@ -1,3 +1,3 @@
-export const SearchBar = () => {
-	return <>SearchBar</>
+export const SearchBar = (): JSX.Element => {
+	return <p>SearchBar</p>
 }
