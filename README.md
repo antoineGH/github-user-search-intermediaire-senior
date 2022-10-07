@@ -1,4 +1,4 @@
-# React Shop
+# GitHub User Search
 
 # Table of contents
 
