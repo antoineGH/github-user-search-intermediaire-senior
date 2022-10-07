@@ -1,0 +1,24 @@
+.edit {
+	margin: 0.5rem 1.5rem;
+}
+
+.action {
+	display: flex;
+	flex-direction: row;
+	align-content: space-between;
+	justify-content: space-between;
+	margin: auto 1.5rem;
+	margin-bottom: 2rem;
+}
+
+.action-left {
+	display: inline-flex;
+	display: flex;
+	gap: 0.5rem;
+}
+
+.action-right {
+	display: inline-flex;
+	display: flex;
+	gap: 1rem;
+}

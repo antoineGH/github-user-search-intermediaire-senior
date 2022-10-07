@@ -1,0 +1,32 @@
+.Search {
+	margin: 1.5rem auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}
+
+.Search input {
+	background-color: #d5d5d5;
+	color: black;
+	width: 270px;
+	border: none;
+	padding: 1rem;
+	text-align: center;
+	font-weight: 700;
+	font-size: 0.9rem;
+	border-radius: 0.4rem;
+}
+
+.Search ::placeholder {
+	color: black;
+	opacity: 1;
+}
+
+.Search :-ms-input-placeholder {
+	color: black;
+}
+
+.Search ::-ms-input-placeholder {
+	color: black;
+}

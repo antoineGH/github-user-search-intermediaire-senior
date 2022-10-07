@@ -1,0 +1,14 @@
+.user-cards {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	margin: 2rem 1rem;
+}
+
+.user-card {
+	background-color: #d5d5d5;
+	width: 100px;
+	height: 150px;
+	border-radius: 0.7rem;
+	box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}

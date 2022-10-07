@@ -1,0 +1,16 @@
+.Topbar {
+	/* background-color: pink; */
+}
+
+.Title {
+	background-color: #929292;
+	height: 64px;
+}
+
+.Title p {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	font-weight: 600;
+}
