@@ -54,16 +54,14 @@ Communication is assured to external interfaces. The system is connected to GitH
 
 ## 7. Installation instructions<a name="installation"></a>
 
-TODO: Update Project Name with Github repo name Download code from Github:
-
 ```shell
-git clone https://github.com/antoineratat/project_name.git
+git clone https://github.com/antoineGH/github-user-search-intermediaire-senior.git
 ```
 
 Navigate to project directory.
 
 ```shell
-cd project_name
+cd github-user-search-intermediaire-senior
 ```
 
 Install node modules.
