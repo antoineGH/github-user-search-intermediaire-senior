@@ -48,7 +48,7 @@ Roadmap:
     export interface Users {
     total_count: number
     incomplete_results: boolean
-    items: Item[]
+    items: User[]
     }
 
     export interface User {
@@ -81,6 +81,8 @@ Roadmap:
         > X-RateLimit-Limit: Request limit per hour
 
         > X-RateLimit-Remaining : The number of requests left for the time window
+
+    -   Add JSDoc markup to annotate code files
 
 ## 2. References<a name="references"></a>
 
