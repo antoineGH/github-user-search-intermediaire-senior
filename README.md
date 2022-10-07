@@ -29,6 +29,25 @@ Create a search input text where users can type in and get results straight away
 
 ## 3. General Features<a name="features"></a>
 
+### Search
+
+-   Allow to search GitHub users with their username
+-   Browse matching username user list
+-   Display user details (avatar, ID, login)
+-   Allow to navigate to GitHub user profile
+
+### Manipulate Results
+
+-   Allow to select user cards
+-   Display the the number of selected users
+-   Allow to dupplicate GitHub user (only front-end / reset on search change)
+-   Allow to delete GitHub user (only front-end / reset on search change)
+
+### Edit Mode
+
+-   Edit Mode On: Allow to select cards, Allow to select all, Display related actions (duplicate and delete)
+-   Edit Mode Off: Disable select cards, Hide actions (select all, duplicate and delete)
+
 ## 4. Technologies<a name="tech"></a>
 
 This system is provisioned to be built in TypeScript using React library which is highly flexible.
