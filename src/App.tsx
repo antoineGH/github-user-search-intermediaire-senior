@@ -7,9 +7,9 @@ import './App.css'
 function App() {
 	const { users, isLoading, hasError, fetchUsers } = useUser()
 
-	useEffect(() => {
-		fetchUsers('antoineGH')
-	}, [])
+	// useEffect(() => {
+	// 	fetchUsers('antoineGH')
+	// }, [])
 
 	return (
 		<div className='App'>
