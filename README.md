@@ -21,6 +21,8 @@ Roadmap:
 -   Configure ESLint Prettier (airbnb standards)
 -   Configure .gitignore
 -   Draw components hierarchy (Pencil)
+-   Initialize project with CRA with TS template
+-   Link Project on GitHub repo
 -   Create project file stucture and components
 -   Build A Static Version in React
 -   Check Responsivness
