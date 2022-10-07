@@ -10,79 +10,11 @@
 6. [Installation instructions](#installation)
 7. [Project structure](#structure)
 8. [Screenshots](#screenshots)
+9. [Roadmap](#roadmap)
 
 ## 1. Instructions<a name="instructions"></a>
 
 Create a search input text where users can type in and get results straight away, without ENTER keypress or submit button required. Results will list Github users like the mock below, and must be responsive.
-
-Roadmap:
-
--   Configure tsconfig.json
--   Configure ESLint Prettier (airbnb standards)
--   Configure .gitignore
--   Draw components hierarchy (Pencil)
--   Initialize project with CRA with TS template
--   Link Project on GitHub repo
--   Create project file stucture and components
--   Build A Static Version in React
--   Check Responsivness
--   Identify State and where it should live
--   Add Up functionnalities
-
-        -   API call
-        -   Search on keypress
-        -   Pagination (intersection Observer to fetch more results)
-        -   Implement debounce to delay API calls on keypress in our input field
-
--   Read Github API docs
-
-    -   Collect EndPoint Search Users: https://docs.github.com/en/search-github/searching-on-github/searching-users
-        > https://api.github.com/search/users?q={USER}
-    -   Get Result Type
-
-        > JSON | No Result | API rate limit
-
-    -   Get JSON type
-
-    ```Javascript
-    export interface Users {
-    total_count: number
-    incomplete_results: boolean
-    items: User[]
-    }
-
-    export interface User {
-    login: string
-    id: number
-    node_id: string
-    avatar_url: string
-    gravatar_id: string
-    url: string
-    html_url: string
-    followers_url: string
-    following_url: string
-    gists_url: string
-    starred_url: string
-    subscriptions_url: string
-    organizations_url: string
-    repos_url: string
-    events_url: string
-    received_events_url: string
-    type: string
-    site_admin: boolean
-    score: number
-    }
-    ```
-
-    -   Format response to keep login, id, avatar_url, html_url
-
-    -   API rate limit (returned HTTP headers) : https://docs.github.com/en/rest/overview/resources-in-the-rest-api
-
-        > X-RateLimit-Limit: Request limit per hour
-
-        > X-RateLimit-Remaining : The number of requests left for the time window
-
-    -   Add JSDoc markup to annotate code files
 
 ## 2. References<a name="references"></a>
 
@@ -174,3 +106,75 @@ npm start
 User Github Result - Full-Screen Desktop ![Components Screenshot]()
 
 User Github Result – Mobile ![Components Screenshot]()
+
+## 9. Roadmap<a name="roadmap"></a>
+
+Roadmap:
+
+-   Configure tsconfig.json
+-   Configure ESLint Prettier (airbnb standards)
+-   Configure .gitignore
+-   Draw components hierarchy (Pencil)
+-   Initialize project with CRA with TS template
+-   Link Project on GitHub repo
+-   Create project file stucture and components
+-   Build A Static Version in React
+-   Check Responsivness (create customHook to adapt to various viewports)
+    > https://blog.logrocket.com/developing-responsive-layouts-with-react-hooks/
+-   Identify State and where it should live
+-   Add Up functionnalities
+
+        -   API call
+        -   Search on keypress
+        -   Pagination (intersection Observer to fetch more results)
+        -   Implement debounce to delay API calls on keypress in our input field
+
+-   Read Github API docs
+
+    -   Collect EndPoint Search Users: https://docs.github.com/en/search-github/searching-on-github/searching-users
+        > https://api.github.com/search/users?q={USER}
+    -   Get Result Type
+
+        > JSON | No Result | API rate limit
+
+    -   Get JSON type
+
+    ```Javascript
+    export interface Users {
+    total_count: number
+    incomplete_results: boolean
+    items: User[]
+    }
+
+    export interface User {
+    login: string
+    id: number
+    node_id: string
+    avatar_url: string
+    gravatar_id: string
+    url: string
+    html_url: string
+    followers_url: string
+    following_url: string
+    gists_url: string
+    starred_url: string
+    subscriptions_url: string
+    organizations_url: string
+    repos_url: string
+    events_url: string
+    received_events_url: string
+    type: string
+    site_admin: boolean
+    score: number
+    }
+    ```
+
+    -   Format response to keep login, id, avatar_url, html_url
+
+    -   API rate limit (returned HTTP headers) : https://docs.github.com/en/rest/overview/resources-in-the-rest-api
+
+        > X-RateLimit-Limit: Request limit per hour
+
+        > X-RateLimit-Remaining : The number of requests left for the time window
+
+    -   Add JSDoc markup to annotate code files
