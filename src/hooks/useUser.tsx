@@ -24,9 +24,20 @@ const initialState: InitialState = {
 	users: {},
 }
 
+/**
+ * Hook to handle fetch and storing the API result
+ * @return {Point} isLoading:boolean
+ * @return {Point} hasError:boolean
+ * @return {Point} users:Users
+ * @return {Point} fetchUsers: (username: string) => Promise<null | void>
+ */
 export const useUser = (): UserOutput => {
-	const [users, dispatch] = useReducer((prevState: any, values: any) => ({ ...prevState, ...values }), initialState)
+	const [state, dispatch] = useReducer((prevState: any, values: any) => ({ ...prevState, ...values }), initialState)
 
+	/**
+	 * Fetch a github user given a username.
+	 * @return {Point} Return metadata and github user data.
+	 */
 	const fetchUsers = async (username: string): Promise<void | null> => {
 		if (!username) return null
 		dispatch({ isLoading: true, hasError: false })
@@ -41,5 +52,5 @@ export const useUser = (): UserOutput => {
 		}
 	}
 
-	return { ...users, fetchUsers }
+	return { ...state, fetchUsers }
 }
