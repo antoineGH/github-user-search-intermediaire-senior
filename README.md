@@ -6,11 +6,10 @@
 2. [References](#references)
 3. [General Features](#features)
 4. [Technologies Implementation](#tech)
-5. [System Features](#sys-features)
-6. [Software Interfaces](#soft-interfaces)
-7. [Installation instructions](#installation)
-8. [Project structure](#structure)
-9. [Screenshots](#screenshots)
+5. [Software Interfaces](#soft-interfaces)
+6. [Installation instructions](#installation)
+7. [Project structure](#structure)
+8. [Screenshots](#screenshots)
 
 ## 1. Instructions<a name="instructions"></a>
 
@@ -61,9 +60,7 @@ List of frontend dependencies and version used:
     - react-scripts: 5.0.1,
     - typescript: V4.8.4,
 
-## 5. System Features<a name="sys-features"></a>
-
-## 6. Software Interfaces<a name="soft-interfaces"></a>
+## 5. Software Interfaces<a name="soft-interfaces"></a>
 
 Software is designed in small fragmented atomic components. Each component has specific functionality and assembled together creates our application.
 
@@ -71,7 +68,7 @@ This is easier to maintain, replace, and re-use.
 
 Communication is assured to external interfaces. The system is connected to GitHub APIs using REST, The payload is defined in the request itself and is formatted in JSON.
 
-## 7. Installation instructions<a name="installation"></a>
+## 6. Installation instructions<a name="installation"></a>
 
 ```shell
 git clone https://github.com/antoineGH/github-user-search-intermediaire-senior.git
@@ -95,13 +92,13 @@ Run the app in development mode. Open http://localhost:3000 to view it in the br
 npm start
 ```
 
-## 8. Project structure<a name="structure"></a>
+## 7. Project structure<a name="structure"></a>
 
 <!-- TODO: Update with final Project project structure -->
 
 ![Components Screenshot]()
 
-## 9. Screenshots<a name="screenshots"></a>
+## 8. Screenshots<a name="screenshots"></a>
 
 <!-- TODO: Update ScreenShot with final result -->
 
