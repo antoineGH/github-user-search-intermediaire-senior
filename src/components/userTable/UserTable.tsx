@@ -7,7 +7,6 @@ type UserTableProps = {
 }
 
 export const UserTable = ({ users }: UserTableProps): JSX.Element => {
-	console.log(users)
 	return (
 		<div className='user-table'>
 			<UserCard />
