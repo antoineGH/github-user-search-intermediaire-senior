@@ -8,7 +8,7 @@ export const FilterBar = (): JSX.Element => {
 			</div>
 			<div className='action'>
 				<div className='action-left'>
-					<input type='checkbox' id='scales' name='scales' checked />
+					<input type='checkbox' id='scales' name='scales' />
 					<p>3 elements selected</p>
 				</div>
 				<div className='action-right'>
