@@ -7,6 +7,9 @@ export const FilterBar = (): JSX.Element => {
 				<button className='button-secondary'>
 					Edit<span className='material-icons icon-grey icon-edit'>edit</span>
 				</button>
+				<button className='button-secondary'>
+					Stop Edit<span className='material-icons icon-grey icon-edit'>close</span>
+				</button>
 			</div>
 			<div className='action'>
 				<div className='action-left'>
