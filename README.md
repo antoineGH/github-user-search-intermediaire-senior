@@ -6,7 +6,7 @@
 2. [References](#references)
 3. [General Features](#features)
 4. [Technologies Implementation](#tech)
-5. [Software Interfaces](#soft-interfaces)
+5. [Software Organisation](#soft-organisation)
 6. [Installation instructions](#installation)
 7. [Project structure](#structure)
 8. [Screenshots](#screenshots)
@@ -63,7 +63,7 @@ List of frontend dependencies and version used:
     - react-scripts: 5.0.1,
     - typescript: V4.8.4,
 
-## 5. Software Interfaces<a name="soft-interfaces"></a>
+## 5. Software Organisation<a name="soft-organisation"></a>
 
 Software is designed in small fragmented atomic components. Each component has specific functionality and assembled together creates our application.
 
