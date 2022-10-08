@@ -1,0 +1,53 @@
+.edit {
+	margin: 0.5rem 1.5rem;
+	display: flex;
+}
+
+.action {
+	display: flex;
+	flex-direction: row;
+	align-content: space-between;
+	justify-content: space-between;
+	margin: auto 1.5rem;
+	margin-bottom: 2rem;
+}
+
+.action-left {
+	display: inline-flex;
+	display: flex;
+	gap: 0.5rem;
+}
+
+.action-right {
+	display: inline-flex;
+	display: flex;
+	gap: 1rem;
+}
+
+.icon-grey {
+	color: var(--icon-color);
+}
+
+.material-icons.icon-grey {
+	font-size: 1.2rem;
+}
+
+.button-secondary {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.3rem 0.7rem;
+	border: none;
+	border-radius: 0.2rem;
+	cursor: pointer;
+	transition: transform 0.2s;
+}
+
+.button-secondary:hover {
+	transform: scale(1.1);
+}
+
+.button-secondary:active {
+	box-shadow: 1px 1px 22px 1px rgba(0, 0, 0, 0.24);
+}

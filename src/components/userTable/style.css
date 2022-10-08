@@ -1,0 +1,5 @@
+.user-table {
+	border-top: solid 1px black;
+	max-height: 50vh;
+	overflow: scroll;
+}
