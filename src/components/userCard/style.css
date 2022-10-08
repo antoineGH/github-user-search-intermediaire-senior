@@ -36,11 +36,22 @@
 	margin-left: 0.5rem;
 }
 
-.user-card-button a button {
-	margin-top: 0.5rem;
+.button-primary {
 	width: 110px;
-	background-color: var(--button-color);
-	padding: 0.5rem 1rem;
+	padding: 0.5rem 0.7rem;
 	border-radius: 0.25rem;
+	background-color: var(--button-color);
 	border: none;
+	cursor: pointer;
+	margin-top: 0.5rem;
+	padding: 0.5rem 1rem;
+	transition: transform 0.2s;
+}
+
+.button-primary:hover {
+	transform: scale(1.1);
+}
+
+.button-primary:active {
+	box-shadow: 1px 1px 22px 1px rgba(0, 0, 0, 0.24);
 }
