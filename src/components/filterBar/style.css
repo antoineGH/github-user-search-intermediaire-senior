@@ -22,3 +22,7 @@
 	display: flex;
 	gap: 1rem;
 }
+
+.icon-grey {
+	color: hsl(0, 0%, 70.5%);
+}

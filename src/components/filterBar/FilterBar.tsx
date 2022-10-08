@@ -13,6 +13,8 @@ export const FilterBar = (): JSX.Element => {
 				</div>
 				<div className='action-right'>
 					<button>Copy</button>
+					<span className='material-icons icon-grey'>content_copy</span>
+					<span className='material-icons icon-grey'>delete</span>
 					<button>Delete</button>
 				</div>
 			</div>
