@@ -1,17 +1,12 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useUser } from './hooks/useUser'
 import { TopBar } from './components/topBar/TopBar'
 import { UserTable } from './components/userTable/UserTable'
 import './App.css'
 
 function App() {
-	const [input, setInput] = useState('')
-	const { users } = useUser(input)
+	const { users, handleChangeUsername } = useUser()
 	console.log(users)
-
-	const handleChangeUsername = (value: string) => {
-		setInput(value)
-	}
 
 	return (
 		<div className='App'>

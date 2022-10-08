@@ -1,62 +1,79 @@
-import { useEffect, useReducer } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useDebounce } from './useDebouce'
-import { Users } from '../types/users'
-
-// Create a customHook to handle fetch and storing the API result
-// Step 1 - type hook output
-// Step 2 - type and declare initialValue
-// Step 3 - handle state with useReducer
-// Step 4 - create async fetch fetchUser function
-// Step 5 - handle loading and error state within our reducer (dispatch)
-// Step 6 - return state from the hook and the fetchUser function
+import { User } from '../types/users'
 
 type UserOutput = {
-	isLoading: false
-	hasError: false
-	users: Users | {}
+	isLoading: boolean
+	hasError: boolean
+	users: User[]
+	handleChangeUsername: (username: string) => void
 }
 
-type InitialState = UserOutput
+type Pagination = {
+	totalCount: number
+	currentPage: number
+	perPage: number
+}
+
+type InitialState = Omit<UserOutput, 'handleChangeUsername'> & Pagination
 
 const initialState: InitialState = {
 	isLoading: false,
 	hasError: false,
-	users: {},
+	users: [],
+	totalCount: 0,
+	currentPage: 1,
+	perPage: 20,
 }
 
-/**
- * Hook to handle fetch and storing the API result
- * @return {Point} isLoading:boolean
- * @return {Point} hasError:boolean
- * @return {Point} users:Users
- * @return {Point} fetchUsers: (username: string) => Promise<null | void>
- */
-export const useUser = (username: string): UserOutput => {
-	const [state, dispatch] = useReducer((prevState: any, values: any) => ({ ...prevState, ...values }), initialState)
-	const debouncedUsername = useDebounce(username)
+export const useUser = (): UserOutput => {
+	const [state, setState] = useState(initialState)
+	const [inputValue, setInputValue] = useState('')
+	const debouncedUsername = useDebounce(inputValue)
+
+	const hasMore = useMemo(() => {
+		console.log('currentPage:', state.currentPage)
+		console.log('totalCount:', state.totalCount)
+		console.log('users.length:', state.users.length)
+		return state.users.length < state.totalCount
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [state.currentPage])
 
 	useEffect(() => {
 		fetchUsers()
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [debouncedUsername])
 
-	/**
-	 * Fetch a github user given a username.
-	 * @return {Point} Return metadata and github user data.
-	 */
 	const fetchUsers = async (): Promise<void | null> => {
 		if (!debouncedUsername) return null
-		dispatch({ isLoading: true, hasError: false })
+		setState((currentState) => ({ ...currentState, isLoading: true, hasError: false }))
 		try {
-			const response = await fetch(`https://api.github.com/search/users?q=${debouncedUsername}`)
-			const responseJson = await response.json()
-			dispatch({ users: responseJson })
+			const response = await fetch(
+				`https://api.github.com/search/users?q=${debouncedUsername}&page=${state.currentPage}&per_page=${state.perPage}`
+			)
+			const { incomplete_results, items, total_count } = await response.json()
+			if (!incomplete_results) {
+				// TODO: incomplete_results
+			}
+			setState((currentState) => ({
+				...currentState,
+				users: currentState.users.length === 0 ? items : [...currentState.users, ...items],
+				isLoading: false,
+				totalCount: total_count,
+				currentPage: currentState.currentPage + 1,
+			}))
 		} catch (e) {
-			dispatch({ hasError: true })
+			setState((currentState) => ({ ...currentState, hasError: true }))
 		} finally {
-			dispatch({ isLoading: false })
+			setState((currentState) => ({ ...currentState, isLoading: false }))
 		}
 	}
 
-	return { ...state }
+	const handleChangeUsername = (value: string) => setInputValue(value)
+
+	// question : reset only pagination or user or both ?
+	// const resetPaginationState = () =>
+	// 	dispatch({ totalCount: initialState.totalCount, currentPage: initialState.currentPage })
+
+	return { ...state, handleChangeUsername }
 }
