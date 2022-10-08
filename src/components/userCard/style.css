@@ -14,7 +14,7 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	background-color: #d5d5d5;
+	background-color: var(--secondary-color);
 	min-width: 200px;
 	height: 250px;
 	border-radius: 0.7rem;
@@ -39,7 +39,7 @@
 .user-card-button a button {
 	margin-top: 0.5rem;
 	width: 110px;
-	background-color: #44a1f8;
+	background-color: var(--button-color);
 	padding: 0.5rem 1rem;
 	border-radius: 0.25rem;
 	border: none;

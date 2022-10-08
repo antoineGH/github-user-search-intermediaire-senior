@@ -13,3 +13,10 @@ body {
 	margin: 2.5rem 1rem;
 	border: solid 1px black;
 }
+
+:root {
+	--primary-color: #929292;
+	--secondary-color: #d5d5d5;
+	--button-color: #44a1f8;
+	--icon-color: hsl(0, 0%, 70.5%);
+}
