@@ -4,7 +4,9 @@ export const FilterBar = (): JSX.Element => {
 	return (
 		<div className='Filter'>
 			<div className='edit'>
-				<button>Edit On</button>
+				<button className='button-secondary'>
+					Edit<span className='material-icons icon-grey icon-edit'>edit</span>
+				</button>
 			</div>
 			<div className='action'>
 				<div className='action-left'>
@@ -12,10 +14,12 @@ export const FilterBar = (): JSX.Element => {
 					<p>3 elements selected</p>
 				</div>
 				<div className='action-right'>
-					<button>Copy</button>
-					<span className='material-icons icon-grey'>content_copy</span>
-					<span className='material-icons icon-grey'>delete</span>
-					<button>Delete</button>
+					<button className='button-secondary'>
+						Copy<span className='material-icons icon-grey'>content_copy</span>
+					</button>
+					<button className='button-secondary'>
+						Delete<span className='material-icons icon-grey'>delete</span>
+					</button>
 				</div>
 			</div>
 		</div>
