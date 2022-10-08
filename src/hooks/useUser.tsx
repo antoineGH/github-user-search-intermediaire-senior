@@ -1,4 +1,5 @@
-import { useReducer } from 'react'
+import { useEffect, useReducer } from 'react'
+import { useDebounce } from './useDebouce'
 import { Users } from '../types/users'
 
 // Create a customHook to handle fetch and storing the API result
@@ -13,10 +14,9 @@ type UserOutput = {
 	isLoading: false
 	hasError: false
 	users: Users | {}
-	fetchUsers: (username: string) => Promise<null | void>
 }
 
-type InitialState = Omit<UserOutput, 'fetchUsers'>
+type InitialState = UserOutput
 
 const initialState: InitialState = {
 	isLoading: false,
@@ -31,18 +31,24 @@ const initialState: InitialState = {
  * @return {Point} users:Users
  * @return {Point} fetchUsers: (username: string) => Promise<null | void>
  */
-export const useUser = (): UserOutput => {
+export const useUser = (username: string): UserOutput => {
 	const [state, dispatch] = useReducer((prevState: any, values: any) => ({ ...prevState, ...values }), initialState)
+	const debouncedUsername = useDebounce(username)
+
+	useEffect(() => {
+		fetchUsers()
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [debouncedUsername])
 
 	/**
 	 * Fetch a github user given a username.
 	 * @return {Point} Return metadata and github user data.
 	 */
-	const fetchUsers = async (username: string): Promise<void | null> => {
-		if (!username) return null
+	const fetchUsers = async (): Promise<void | null> => {
+		if (!debouncedUsername) return null
 		dispatch({ isLoading: true, hasError: false })
 		try {
-			const response = await fetch(`https://api.github.com/search/users?q=${username}`)
+			const response = await fetch(`https://api.github.com/search/users?q=${debouncedUsername}`)
 			const responseJson = await response.json()
 			dispatch({ users: responseJson })
 		} catch (e) {
@@ -52,5 +58,5 @@ export const useUser = (): UserOutput => {
 		}
 	}
 
-	return { ...state, fetchUsers }
+	return { ...state }
 }

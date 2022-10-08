@@ -1,9 +1,19 @@
 import './style.css'
 
-export const SearchBar = (): JSX.Element => {
+type Props = {
+	handleChangeUsername: (value: string) => void
+}
+
+export const SearchBar = ({ handleChangeUsername }: Props): JSX.Element => {
 	return (
 		<div className='Search'>
-			<input type='text' id='username' name='username' placeholder='Search input' />
+			<input
+				type='text'
+				id='username'
+				name='username'
+				placeholder='Search input'
+				onChange={(e) => handleChangeUsername(e.target.value)}
+			/>
 		</div>
 	)
 }

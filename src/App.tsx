@@ -1,20 +1,22 @@
-import React, { useEffect } from 'react'
+import React, { useState } from 'react'
 import { useUser } from './hooks/useUser'
 import { TopBar } from './components/topBar/TopBar'
 import { UserTable } from './components/userTable/UserTable'
 import './App.css'
 
 function App() {
-	const { users, isLoading, hasError, fetchUsers } = useUser()
+	const [input, setInput] = useState('')
+	const { users } = useUser(input)
+	console.log(users)
 
-	// useEffect(() => {
-	// 	fetchUsers('antoineGH')
-	// }, [])
+	const handleChangeUsername = (value: string) => {
+		setInput(value)
+	}
 
 	return (
 		<div className='App'>
-			<TopBar />
-			<UserTable users={users} />
+			<TopBar handleChangeUsername={handleChangeUsername} />
+			<UserTable />
 		</div>
 	)
 }
