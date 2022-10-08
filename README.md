@@ -16,6 +16,8 @@
 
 Create a search input text where users can type in and get results straight away, without ENTER keypress or submit button required. Results will list Github users like the mock below, and must be responsive.
 
+![Aim](https://user-images.githubusercontent.com/42266363/181709007-eabaf8ff-e298-44db-9213-bb515c2e0757.png)
+
 ## 2. References<a name="references"></a>
 
 -   React - https://reactjs.org/
