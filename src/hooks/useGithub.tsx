@@ -58,12 +58,11 @@ export const useGithub = (): {
 	const fetchUsers = async (): Promise<void | null> => {
 		try {
 			if (!debouncedUsername) {
-				throw new Error('Please input username')
+				return
 			}
 			setState((currentState) => ({ ...currentState, isLoading: true, error: '' }))
 			const { items, total_count, incomplete_results } = await fetchUser(debouncedUsername, nextPage, perPage)
 			if (!incomplete_results) {
-				// TODO: incomplete_results
 				setState((currentState) => ({
 					...currentState,
 					error: 'Incomplete results',

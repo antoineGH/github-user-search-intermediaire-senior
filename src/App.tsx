@@ -10,7 +10,7 @@ function App() {
 	return (
 		<div className='App'>
 			<TopBar handleChangeUsername={handleChangeUsername} />
-			<UserTable />
+			<UserTable users={users} />
 			{hasMore && <button onClick={handleLoadMoreUsers}>Load More</button>}
 		</div>
 	)

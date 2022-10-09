@@ -1,10 +1,18 @@
+import { User } from '../../types/users'
 import { UserCard } from '../userCard/UserCard'
 import './style.css'
 
-export const UserTable = (): JSX.Element => {
+type Props = {
+	users: User[]
+}
+
+export const UserTable = ({ users }: Props): JSX.Element => {
 	return (
 		<div className='user-table'>
-			<UserCard />
+			{users.map((user) => (
+				<UserCard key={user.id} user={user} />
+			))}
+			{/* <UserCard /> */}
 		</div>
 	)
 }
