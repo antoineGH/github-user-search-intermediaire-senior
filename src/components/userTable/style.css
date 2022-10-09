@@ -17,3 +17,18 @@
 	justify-content: center;
 	margin-top: 2rem;
 }
+
+.icon-loading {
+	color: var(--primary-color);
+	font-size: 1.5rem;
+	animation: rotation 2s infinite linear;
+}
+
+@keyframes rotation {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(-359deg);
+	}
+}

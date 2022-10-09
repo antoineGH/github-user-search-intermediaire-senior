@@ -20,7 +20,7 @@ export const UserTable = ({ users, isLoading, error }: Props): JSX.Element => {
 				</div>
 			) : isLoading ? (
 				<div className='no-result'>
-					<p>Loading</p>
+					<span className='material-icons icon-loading'>loop</span>
 				</div>
 			) : (
 				<div className='user-cards'>
