@@ -1,5 +1,12 @@
 .user-table {
 	border-top: solid 1px black;
 	max-height: 50vh;
-	overflow: scroll;
+	overflow-y: scroll;
+}
+
+.user-cards {
+	margin: 1rem 1rem;
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	gap: 1rem;
 }

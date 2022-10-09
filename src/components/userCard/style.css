@@ -1,21 +1,10 @@
-.user-cards {
-	display: flex;
-	margin: 1rem 1rem;
-	gap: 1rem;
-}
-
-.user-cards::after {
-	content: '';
-	flex: auto;
-}
-
 .user-card {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	background-color: var(--secondary-color);
-	min-width: 200px;
+	max-width: 200px;
 	height: 250px;
 	border-radius: 0.7rem;
 	box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
@@ -29,7 +18,20 @@
 .user-card-header {
 	display: flex;
 	width: 90%;
-	margin-bottom: 1rem;
+}
+
+.user-card-id {
+	margin-top: 0.5rem;
+	font-size: 0.9rem;
+}
+
+.user-card-login {
+	font-weight: 600;
+	font-size: 1rem;
+}
+
+.user-card-button {
+	margin-top: 1rem;
 }
 
 .user-card-header input {

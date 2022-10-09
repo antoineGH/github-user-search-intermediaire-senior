@@ -9,10 +9,11 @@ type Props = {
 export const UserTable = ({ users }: Props): JSX.Element => {
 	return (
 		<div className='user-table'>
-			{users.map((user) => (
-				<UserCard key={user.id} user={user} />
-			))}
-			{/* <UserCard /> */}
+			<div className='user-cards'>
+				{users.map((user) => (
+					<UserCard key={user.id} user={user} />
+				))}
+			</div>
 		</div>
 	)
 }
