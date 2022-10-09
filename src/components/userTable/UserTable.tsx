@@ -27,6 +27,7 @@ export const UserTable = ({
 	const lastUserElement = useCallback(
 		(node: any) => {
 			if (isLoading) return
+			if (!hasMore) return
 			if (observer.current) observer.current.disconnect()
 			observer.current = new IntersectionObserver((entries) => {
 				if (entries[0].isIntersecting) {
@@ -38,7 +39,7 @@ export const UserTable = ({
 
 			if (node) observer.current.observe(node)
 		},
-		[isLoading]
+		[hasMore]
 	)
 
 	const genRanHex = (size: number) => [...Array(size)].map(() => Math.floor(Math.random() * 16).toString(16)).join('')
