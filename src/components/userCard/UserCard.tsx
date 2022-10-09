@@ -17,7 +17,7 @@ export const UserCard = ({ user }: Props): JSX.Element => {
 				<div className='user-card-id'>{user.id}</div>
 				<div className='user-card-login'>{user.login}</div>
 				<div className='user-card-button'>
-					<a href={user.html_url}>
+					<a href={user.html_url} target='_blank' rel='noreferrer'>
 						<button className='button-primary'>View profile</button>
 					</a>
 				</div>
