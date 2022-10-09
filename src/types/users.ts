@@ -1,9 +1,3 @@
-export type Users = {
-	total_count: number
-	incomplete_results: boolean
-	items: User[]
-}
-
 export type User = {
 	login: string
 	id: number

@@ -1,17 +1,17 @@
 import React from 'react'
-import { useUser } from './hooks/useUser'
+import { useGithub } from './hooks/useGithub'
 import { TopBar } from './components/topBar/TopBar'
 import { UserTable } from './components/userTable/UserTable'
 import './App.css'
 
 function App() {
-	const { users, handleChangeUsername } = useUser()
-	console.log(users)
+	const { users, handleChangeUsername, hasMore, handleLoadMoreUsers } = useGithub()
 
 	return (
 		<div className='App'>
 			<TopBar handleChangeUsername={handleChangeUsername} />
 			<UserTable />
+			{hasMore && <button onClick={handleLoadMoreUsers}>Load More</button>}
 		</div>
 	)
 }
