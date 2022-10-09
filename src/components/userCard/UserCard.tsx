@@ -3,12 +3,13 @@ import './style.css'
 
 type Props = {
 	user: User
+	lastUserElement: any
 }
 
-export const UserCard = ({ user }: Props): JSX.Element => {
+export const UserCard = ({ user, lastUserElement }: Props): JSX.Element => {
 	return (
 		<>
-			<div className='user-card'>
+			<div className='user-card' ref={lastUserElement}>
 				<div className='user-card-header'>
 					<input type='checkbox' id='scales' name='scales' />
 				</div>

@@ -8,17 +8,25 @@ type Props = {
 	isLoading: boolean
 	error: string
 	hasMore: boolean
+	hasError: boolean
+	hasResult: boolean
 	handleLoadMoreUsers: () => void
 }
 
-export const UserTable = ({ users, isLoading, error, hasMore, handleLoadMoreUsers }: Props): JSX.Element => {
-	const hasResult = (): boolean => users?.length !== 0
-	const hasError = (): boolean => error?.length > 1
-
+export const UserTable = ({
+	users,
+	isLoading,
+	error,
+	hasMore,
+	hasError,
+	hasResult,
+	handleLoadMoreUsers,
+}: Props): JSX.Element => {
 	const observer = useRef<IntersectionObserver | null>(null)
 
-	const lastItemRef = useCallback(
+	const lastUserElement = useCallback(
 		(node: any) => {
+			if (isLoading) return
 			if (observer.current) observer.current.disconnect()
 			observer.current = new IntersectionObserver((entries) => {
 				if (entries[0].isIntersecting) {
@@ -30,14 +38,14 @@ export const UserTable = ({ users, isLoading, error, hasMore, handleLoadMoreUser
 
 			if (node) observer.current.observe(node)
 		},
-		[isLoading, hasMore]
+		[isLoading]
 	)
 
 	const genRanHex = (size: number) => [...Array(size)].map(() => Math.floor(Math.random() * 16).toString(16)).join('')
 
 	return (
-		<div className='user-table' style={hasResult() ? { overflowY: 'scroll' } : { overflowY: 'auto' }}>
-			{hasError() ? (
+		<div className='user-table' style={hasResult ? { overflowY: 'scroll' } : { overflowY: 'auto' }}>
+			{hasError ? (
 				<div className='no-result'>
 					<p>{error}</p>
 				</div>
@@ -49,10 +57,9 @@ export const UserTable = ({ users, isLoading, error, hasMore, handleLoadMoreUser
 				<>
 					<div className='user-cards'>
 						{users.map((user) => (
-							<UserCard key={user.id + genRanHex(6)} user={user} />
+							<UserCard lastUserElement={lastUserElement} key={user.id + genRanHex(6)} user={user} />
 						))}
 					</div>
-					<div ref={lastItemRef}>myRef</div>
 				</>
 			)}
 		</div>

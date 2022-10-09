@@ -1,15 +1,15 @@
-type InitialState = {}
-
-const initialState: InitialState = {}
-
 type useEditUsersOutput = {
-	handleCopyUser: () => void
-	handleDeleteUser: () => void
+	handleCopyUser: (toCopy: number[]) => void
+	handleDeleteUser: (toDelete: number[]) => void
 }
 
 export const useEditUsers = (): useEditUsersOutput => {
-	const handleCopyUser = () => {}
-	const handleDeleteUser = () => {}
+	const handleCopyUser = (toCopy: number[]) => {
+		console.log(toCopy)
+	}
+	const handleDeleteUser = (toDelete: number[]) => {
+		console.log(toDelete)
+	}
 
 	return { handleCopyUser, handleDeleteUser }
 }
