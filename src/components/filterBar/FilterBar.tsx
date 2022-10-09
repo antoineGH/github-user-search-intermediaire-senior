@@ -20,7 +20,7 @@ export const FilterBar = (): JSX.Element => {
 					<button className='button-secondary'>
 						Copy<span className='material-icons icon-grey'>content_copy</span>
 					</button>
-					<button className='button-secondary'>
+					<button className='button-secondary' onClick={() => console.log('delete')}>
 						Delete<span className='material-icons icon-grey'>delete</span>
 					</button>
 				</div>

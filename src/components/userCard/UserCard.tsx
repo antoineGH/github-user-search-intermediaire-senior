@@ -4,6 +4,7 @@ import './style.css'
 type Props = {
 	user: User
 }
+
 export const UserCard = ({ user }: Props): JSX.Element => {
 	return (
 		<>

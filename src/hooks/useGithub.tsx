@@ -53,7 +53,7 @@ export const useGithub = (): {
 
 	useEffect(() => {
 		setState((currentState) => ({ ...currentState, hasMore: currentState.users.length < currentState.totalCount }))
-	}, [users.length])
+	}, [users?.length])
 
 	const fetchUsers = async (): Promise<void | null> => {
 		try {
@@ -80,7 +80,7 @@ export const useGithub = (): {
 		await fetchUsers()
 	}
 
-	console.log(state)
+	// console.log(state)
 
 	const handleChangeUsername = (value: string) => setInputValue(value)
 
