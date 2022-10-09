@@ -4,22 +4,29 @@ import './style.css'
 
 type Props = {
 	users: User[]
+	isLoading: boolean
+	error: string
 }
 
-export const UserTable = ({ users }: Props): JSX.Element => {
+export const UserTable = ({ users, isLoading, error }: Props): JSX.Element => {
 	const hasResult = (): boolean => users.length !== 0
+	const hasError = (): boolean => error.length > 1
 
 	return (
 		<div className='user-table' style={hasResult() ? { overflowY: 'scroll' } : { overflowY: 'auto' }}>
-			{hasResult() ? (
+			{hasError() ? (
+				<div className='no-result'>
+					<p>{error}</p>
+				</div>
+			) : isLoading ? (
+				<div className='no-result'>
+					<p>Loading</p>
+				</div>
+			) : (
 				<div className='user-cards'>
 					{users.map((user) => (
 						<UserCard key={user.id} user={user} />
 					))}
-				</div>
-			) : (
-				<div className='no-result'>
-					<p>No results</p>
 				</div>
 			)}
 		</div>

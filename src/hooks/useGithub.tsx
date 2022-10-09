@@ -61,13 +61,7 @@ export const useGithub = (): {
 				return
 			}
 			setState((currentState) => ({ ...currentState, isLoading: true, error: '' }))
-			const { items, total_count, incomplete_results } = await fetchUser(debouncedUsername, nextPage, perPage)
-			if (!incomplete_results) {
-				setState((currentState) => ({
-					...currentState,
-					error: 'Incomplete results',
-				}))
-			}
+			const { items, total_count } = await fetchUser(debouncedUsername, nextPage, perPage)
 			setState((currentState) => ({
 				...currentState,
 				users: currentState.users.length === 0 ? items : [...currentState.users, ...items],
