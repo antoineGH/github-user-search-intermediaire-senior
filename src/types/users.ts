@@ -19,3 +19,8 @@ export type User = {
 	site_admin: boolean
 	score: number
 }
+
+export enum ActionType {
+	add = 'add',
+	remove = 'remove',
+}

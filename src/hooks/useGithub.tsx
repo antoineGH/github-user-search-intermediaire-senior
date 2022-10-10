@@ -46,8 +46,6 @@ export const useGithub = (): {
 	const previousUsername = usePreviousValue<string>(inputValue)
 	const debouncedUsername = useDebounce<string>(inputValue)
 
-	// console.log(state)
-
 	useEffect(() => {
 		if (previousUsername !== inputValue) {
 			setState((currentState) => ({ ...currentState, totalCount: 0, nextPage: 1, users: [] }))
@@ -98,15 +96,13 @@ export const useGithub = (): {
 		const elToCopy: User[] = []
 		state.users.forEach((user) => {
 			if (toCopy.includes(user.id)) {
-				const userCopied = user
-				userCopied.node_id = userCopied.node_id + Date.now()
+				const userCopied = Object.assign({}, user)
+				userCopied.id = userCopied.id + 1
 				elToCopy.push(userCopied)
 			}
 		})
-		setState((currentState) => ({ ...currentState, users: [...currentState.users, ...elToCopy] }))
+		setState((currentState) => ({ ...currentState, users: [...elToCopy, ...currentState.users] }))
 	}
-
-	// console.log(state)
 
 	const handleChangeUsername = (value: string) => setInputValue(value)
 

@@ -1,5 +1,5 @@
 import { useCallback, useRef } from 'react'
-import { User } from '../../types/users'
+import { ActionType, User } from '../../types/users'
 import { UserCard } from '../userCard/UserCard'
 import './style.css'
 
@@ -10,8 +10,10 @@ type Props = {
 	hasMore: boolean
 	hasError: boolean
 	hasResult: boolean
-	handleLoadMoreUsers: () => void
 	editOn: boolean
+	handleLoadMoreUsers: () => void
+	selectUserID: (userID: number, action: ActionType) => void
+	selectedID: number[]
 }
 
 export const UserTable = ({
@@ -21,8 +23,10 @@ export const UserTable = ({
 	hasMore,
 	hasError,
 	hasResult,
-	handleLoadMoreUsers,
 	editOn,
+	handleLoadMoreUsers,
+	selectUserID,
+	selectedID,
 }: Props): JSX.Element => {
 	const observer = useRef<IntersectionObserver | null>(null)
 
@@ -45,8 +49,6 @@ export const UserTable = ({
 		[hasMore]
 	)
 
-	const genRanHex = (size: number) => [...Array(size)].map(() => Math.floor(Math.random() * 16).toString(16)).join('')
-
 	return (
 		<div className='user-table' style={hasResult ? { overflowY: 'scroll' } : { overflowY: 'auto' }}>
 			{hasError ? (
@@ -60,12 +62,14 @@ export const UserTable = ({
 			) : (
 				<>
 					<div className='user-cards'>
-						{users.map((user) => (
+						{users.map((user, count) => (
 							<UserCard
 								lastUserElement={lastUserElement}
-								key={user.id + genRanHex(6)}
+								key={count}
 								user={user}
 								editOn={editOn}
+								selectUserID={selectUserID}
+								selectedID={selectedID}
 							/>
 						))}
 					</div>

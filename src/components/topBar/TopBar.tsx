@@ -8,6 +8,9 @@ type Props = {
 	handleCopyUsers: () => void
 	handleToggleEdit: () => void
 	editOn: boolean
+	selectedID: number[]
+	handleSelectAll: () => void
+	handleUnSelectAll: () => void
 }
 
 export const TopBar = ({
@@ -16,6 +19,9 @@ export const TopBar = ({
 	handleCopyUsers,
 	handleToggleEdit,
 	editOn,
+	selectedID,
+	handleSelectAll,
+	handleUnSelectAll,
 }: Props): JSX.Element => {
 	return (
 		<div className='Topbar'>
@@ -28,6 +34,9 @@ export const TopBar = ({
 				handleCopyUsers={handleCopyUsers}
 				handleToggleEdit={handleToggleEdit}
 				editOn={editOn}
+				selectedID={selectedID}
+				handleSelectAll={handleSelectAll}
+				handleUnSelectAll={handleUnSelectAll}
 			/>
 		</div>
 	)

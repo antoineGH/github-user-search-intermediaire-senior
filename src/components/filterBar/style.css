@@ -50,3 +50,10 @@
 .button-secondary:active {
 	box-shadow: 1px 1px 22px 1px rgba(0, 0, 0, 0.24);
 }
+
+.selected {
+	text-align: center;
+	display: flex;
+	align-items: center;
+	margin-bottom: 0.1rem;
+}

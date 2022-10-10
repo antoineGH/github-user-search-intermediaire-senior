@@ -3,6 +3,7 @@ import { TopBar } from './components/topBar/TopBar'
 import { UserTable } from './components/userTable/UserTable'
 import './App.css'
 import { useState } from 'react'
+import { ActionType } from './types/users'
 
 function App() {
 	const {
@@ -18,23 +19,57 @@ function App() {
 		copyUsers,
 	} = useGithub()
 
-	const handleCopyUsers = () => {
-		console.log('handleCopyUsers')
-		// copyUsers([11167, 295709])
+	const [selectedID, setSelectedID] = useState<number[]>([])
+	const [editOn, setEditOn] = useState<boolean>(false)
+	console.log(selectedID)
+
+	const addUserID = (userID: number): void => {
+		if (!selectedID.includes(userID)) setSelectedID((prevState) => [...prevState, userID])
 	}
-	const handleDeleteUsers = () => {
-		console.log('handleDeleteUsers')
-		// deleteUsers([11167, 295709])
+
+	const removeUserID = (userID: number): void => {
+		const filteredSelectedID = selectedID.filter((id) => id !== userID)
+		setSelectedID(filteredSelectedID)
+	}
+
+	const selectUserID = (userID: number, action: ActionType): void => {
+		if (!userID) return
+		if (action === 'add') {
+			addUserID(userID)
+		} else {
+			removeUserID(userID)
+		}
+	}
+
+	const handleCopyUsers = (): void => {
+		console.log('handleCopyUsers')
+		if (selectedID.length > 0) {
+			copyUsers(selectedID)
+			setSelectedID([])
+		}
+	}
+
+	const handleDeleteUsers = (): void => {
+		if (selectedID.length > 0) {
+			deleteUsers(selectedID)
+			setSelectedID([])
+		}
 	}
 
 	const handleToggleEdit = (): void => {
-		setEditOn((current) => !current)
+		setEditOn((prevState) => !prevState)
 	}
 
-	const [selectedID, setSelectedID] = useState<number[]>([])
-	const [editOn, setEditOn] = useState<boolean>(true)
+	const handleSelectAll = (): void => {
+		console.log('handleSelectAll')
+		users.forEach((user) => {
+			setSelectedID((currentState) => [...currentState, user.id])
+		})
+	}
 
-	console.log(selectedID)
+	const handleUnSelectAll = (): void => {
+		setSelectedID([])
+	}
 
 	return (
 		<div className='App'>
@@ -44,6 +79,9 @@ function App() {
 				handleCopyUsers={handleCopyUsers}
 				handleToggleEdit={handleToggleEdit}
 				editOn={editOn}
+				selectedID={selectedID}
+				handleSelectAll={handleSelectAll}
+				handleUnSelectAll={handleUnSelectAll}
 			/>
 			<UserTable
 				users={users}
@@ -52,8 +90,10 @@ function App() {
 				hasMore={hasMore}
 				hasError={hasError}
 				hasResult={hasResult}
-				handleLoadMoreUsers={handleLoadMoreUsers}
 				editOn={editOn}
+				handleLoadMoreUsers={handleLoadMoreUsers}
+				selectUserID={selectUserID}
+				selectedID={selectedID}
 			/>
 			{hasMore && <button onClick={handleLoadMoreUsers}>Load More</button>}
 		</div>

@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import './style.css'
 
 type Props = {
@@ -5,9 +6,41 @@ type Props = {
 	handleCopyUsers: () => void
 	handleToggleEdit: () => void
 	editOn: boolean
+	selectedID: number[]
+	handleSelectAll: () => void
+	handleUnSelectAll: () => void
 }
 
-export const FilterBar = ({ handleDeleteUsers, handleCopyUsers, handleToggleEdit, editOn }: Props): JSX.Element => {
+export const FilterBar = ({
+	handleDeleteUsers,
+	handleCopyUsers,
+	handleToggleEdit,
+	editOn,
+	selectedID,
+	handleSelectAll,
+	handleUnSelectAll,
+}: Props): JSX.Element => {
+	const countSelectedElements = (): number => {
+		if (selectedID.length) return selectedID.length
+		return 0
+	}
+
+	const [isChecked, setIsChecked] = useState(false)
+
+	const handleChecked = () => {
+		if (isChecked) {
+			handleUnSelectAll()
+		} else {
+			handleSelectAll()
+		}
+		setIsChecked((prevState) => !prevState)
+	}
+
+	useEffect(() => {
+		if (selectedID.length >= 1) setIsChecked(true)
+		if (selectedID.length === 0) setIsChecked(false)
+	}, [selectedID])
+
 	return (
 		<div className='Filter'>
 			<div className='edit'>
@@ -19,8 +52,8 @@ export const FilterBar = ({ handleDeleteUsers, handleCopyUsers, handleToggleEdit
 			{!editOn && (
 				<div className='action'>
 					<div className='action-left'>
-						<input type='checkbox' id='scales' name='scales' />
-						<p>3 elements selected</p>
+						<input type='checkbox' id='scales' name='scales' onChange={handleChecked} checked={isChecked} />
+						<p className='selected'>{countSelectedElements()} elements selected</p>
 					</div>
 
 					<div className='action-right'>
