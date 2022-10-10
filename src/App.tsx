@@ -2,6 +2,7 @@ import { useGithub } from './hooks/useGithub'
 import { TopBar } from './components/topBar/TopBar'
 import { UserTable } from './components/userTable/UserTable'
 import './App.css'
+import { useState } from 'react'
 
 function App() {
 	const {
@@ -26,12 +27,23 @@ function App() {
 		// deleteUsers([11167, 295709])
 	}
 
+	const handleToggleEdit = (): void => {
+		setEditOn((current) => !current)
+	}
+
+	const [selectedID, setSelectedID] = useState<number[]>([])
+	const [editOn, setEditOn] = useState<boolean>(true)
+
+	console.log(selectedID)
+
 	return (
 		<div className='App'>
 			<TopBar
 				handleChangeUsername={handleChangeUsername}
 				handleDeleteUsers={handleDeleteUsers}
 				handleCopyUsers={handleCopyUsers}
+				handleToggleEdit={handleToggleEdit}
+				editOn={editOn}
 			/>
 			<UserTable
 				users={users}
@@ -41,6 +53,7 @@ function App() {
 				hasError={hasError}
 				hasResult={hasResult}
 				handleLoadMoreUsers={handleLoadMoreUsers}
+				editOn={editOn}
 			/>
 			{hasMore && <button onClick={handleLoadMoreUsers}>Load More</button>}
 		</div>

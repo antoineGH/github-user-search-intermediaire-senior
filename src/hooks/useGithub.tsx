@@ -46,7 +46,7 @@ export const useGithub = (): {
 	const previousUsername = usePreviousValue<string>(inputValue)
 	const debouncedUsername = useDebounce<string>(inputValue)
 
-	console.log(state)
+	// console.log(state)
 
 	useEffect(() => {
 		if (previousUsername !== inputValue) {
@@ -71,7 +71,6 @@ export const useGithub = (): {
 			}
 			setState((currentState) => ({ ...currentState, isLoading: true, error: '' }))
 			const { items, total_count } = await fetchUser(debouncedUsername, nextPage, perPage)
-			console.log(state)
 			setState((currentState) => ({
 				...currentState,
 				users: currentState.users.length === 0 ? items : [...currentState.users, ...items],

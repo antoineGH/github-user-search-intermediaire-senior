@@ -11,6 +11,7 @@ type Props = {
 	hasError: boolean
 	hasResult: boolean
 	handleLoadMoreUsers: () => void
+	editOn: boolean
 }
 
 export const UserTable = ({
@@ -21,6 +22,7 @@ export const UserTable = ({
 	hasError,
 	hasResult,
 	handleLoadMoreUsers,
+	editOn,
 }: Props): JSX.Element => {
 	const observer = useRef<IntersectionObserver | null>(null)
 
@@ -39,6 +41,7 @@ export const UserTable = ({
 
 			if (node) observer.current.observe(node)
 		},
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 		[hasMore]
 	)
 
@@ -58,7 +61,12 @@ export const UserTable = ({
 				<>
 					<div className='user-cards'>
 						{users.map((user) => (
-							<UserCard lastUserElement={lastUserElement} key={user.id + genRanHex(6)} user={user} />
+							<UserCard
+								lastUserElement={lastUserElement}
+								key={user.id + genRanHex(6)}
+								user={user}
+								editOn={editOn}
+							/>
 						))}
 					</div>
 				</>

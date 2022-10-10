@@ -4,26 +4,27 @@ import './style.css'
 type Props = {
 	user: User
 	lastUserElement: any
+	editOn: boolean
 }
 
-export const UserCard = ({ user, lastUserElement }: Props): JSX.Element => {
+export const UserCard = ({ user, lastUserElement, editOn }: Props): JSX.Element => {
 	return (
-		<>
-			<div className='user-card' ref={lastUserElement}>
+		<div className='user-card' ref={lastUserElement}>
+			{!editOn && (
 				<div className='user-card-header'>
 					<input type='checkbox' id='scales' name='scales' />
 				</div>
-				<div className='user-card-avatar'>
-					<img src={user.avatar_url} alt={user.login + "'s avatar"} />
-				</div>
-				<div className='user-card-id'>{user.id}</div>
-				<div className='user-card-login'>{user.login}</div>
-				<div className='user-card-button'>
-					<a href={user.html_url} target='_blank' rel='noreferrer'>
-						<button className='button-primary'>View profile</button>
-					</a>
-				</div>
+			)}
+			<div className='user-card-avatar'>
+				<img src={user.avatar_url} alt={user.login + "'s avatar"} />
 			</div>
-		</>
+			<div className='user-card-id'>{user.id}</div>
+			<div className='user-card-login'>{user.login}</div>
+			<div className='user-card-button'>
+				<a href={user.html_url} target='_blank' rel='noreferrer'>
+					<button className='button-primary'>View profile</button>
+				</a>
+			</div>
+		</div>
 	)
 }
