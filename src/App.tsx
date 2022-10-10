@@ -17,12 +17,22 @@ function App() {
 		copyUsers,
 	} = useGithub()
 
+	const handleCopyUsers = () => {
+		console.log('handleCopyUsers')
+		// copyUsers([11167, 295709])
+	}
+	const handleDeleteUsers = () => {
+		console.log('handleDeleteUsers')
+		// deleteUsers([11167, 295709])
+	}
+
 	return (
 		<div className='App'>
-			{/* TEST DELETE */}
-			<button onClick={() => deleteUsers([11167, 295709])}>Delete</button>
-			<button onClick={() => copyUsers([11167, 295709])}>Copy</button>
-			<TopBar handleChangeUsername={handleChangeUsername} />
+			<TopBar
+				handleChangeUsername={handleChangeUsername}
+				handleDeleteUsers={handleDeleteUsers}
+				handleCopyUsers={handleCopyUsers}
+			/>
 			<UserTable
 				users={users}
 				isLoading={isLoading}

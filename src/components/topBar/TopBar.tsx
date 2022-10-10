@@ -4,16 +4,18 @@ import './style.css'
 
 type Props = {
 	handleChangeUsername: (value: string) => void
+	handleDeleteUsers: () => void
+	handleCopyUsers: () => void
 }
 
-export const TopBar = ({ handleChangeUsername }: Props): JSX.Element => {
+export const TopBar = ({ handleChangeUsername, handleDeleteUsers, handleCopyUsers }: Props): JSX.Element => {
 	return (
 		<div className='Topbar'>
 			<div className='Title'>
 				<p>Github Search</p>
 			</div>
 			<SearchBar handleChangeUsername={handleChangeUsername} />
-			<FilterBar />
+			<FilterBar handleDeleteUsers={handleDeleteUsers} handleCopyUsers={handleCopyUsers} />
 		</div>
 	)
 }

@@ -32,3 +32,39 @@
 		transform: rotate(-359deg);
 	}
 }
+
+/* MEDIA QUERIES */
+
+@media (max-width: 1200px) {
+	.user-cards {
+		grid-template-columns: repeat(4, 1fr);
+	}
+}
+@media (max-width: 768px) {
+	.user-cards {
+		grid-template-columns: repeat(3, 1fr);
+		place-items: center;
+	}
+}
+@media (max-width: 600px) {
+	.user-cards {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	.edit {
+		justify-content: center;
+	}
+
+	.action {
+		margin-top: 1rem !important;
+		flex-direction: column !important;
+		justify-content: center !important;
+		align-items: center;
+		gap: 0.5rem;
+	}
+}
+@media (max-width: 480px) {
+	.user-cards {
+		grid-template-columns: repeat(1, 1fr) !important;
+	}
+}

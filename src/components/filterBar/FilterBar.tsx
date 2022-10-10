@@ -1,6 +1,11 @@
 import './style.css'
 
-export const FilterBar = (): JSX.Element => {
+type Props = {
+	handleDeleteUsers: () => void
+	handleCopyUsers: () => void
+}
+
+export const FilterBar = ({ handleDeleteUsers, handleCopyUsers }: Props): JSX.Element => {
 	return (
 		<div className='Filter'>
 			<div className='edit'>
@@ -17,10 +22,10 @@ export const FilterBar = (): JSX.Element => {
 					<p>3 elements selected</p>
 				</div>
 				<div className='action-right'>
-					<button className='button-secondary' onClick={() => console.log('copy')}>
+					<button className='button-secondary' onClick={handleCopyUsers}>
 						Copy<span className='material-icons icon-grey'>content_copy</span>
 					</button>
-					<button className='button-secondary' onClick={() => console.log('delete')}>
+					<button className='button-secondary' onClick={handleDeleteUsers}>
 						Delete<span className='material-icons icon-grey'>delete</span>
 					</button>
 				</div>
