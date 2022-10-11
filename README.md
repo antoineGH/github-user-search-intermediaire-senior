@@ -95,39 +95,38 @@ npm start
 
 ## 7. Project structure<a name="structure"></a>
 
-<!-- TODO: Update with final Project project structure -->
+<br>
 
-![Components Screenshot]()
+![Components Screenshot](https://github.com/antoineGH/github_user_search/blob/main/docs/Components%20Hierarchy.jpg?raw=true)
 
 ## 8. Screenshots<a name="screenshots"></a>
 
 <!-- TODO: Update ScreenShot with final result -->
 
-User Github Result - Full-Screen Desktop ![Components Screenshot]()
+User Github Result - Full-Screen Desktop ![Components Screenshot](https://github.com/antoineGH/github_user_search/blob/main/docs/Mockup_Laptop.jpg?raw=true)
 
-User Github Result – Mobile ![Components Screenshot]()
+User Github Result – Mobile ![Components Screenshot](https://github.com/antoineGH/github_user_search/blob/main/docs/Mockup_Mobile.jpg?raw=true)
 
 ## 9. Roadmap<a name="roadmap"></a>
 
-Roadmap:
-
--   Configure tsconfig.json
--   Configure ESLint Prettier (airbnb standards)
--   Configure .gitignore
 -   Draw components hierarchy (Pencil)
--   Initialize project with CRA with TS template
+-   Initialize project with CRA and TS template
 -   Link Project on GitHub repo
 -   Create project file stucture and components
 -   Build A Static Version in React
--   Check Responsivness (create customHook to adapt to various viewports)
-    > https://blog.logrocket.com/developing-responsive-layouts-with-react-hooks/
+-   Check Responsivness (using CSS media queries)
 -   Identify State and where it should live
+-   Create customHook to handle external logic (pagination, debounce, loading & error state)
 -   Add Up functionnalities
 
         -   API call
         -   Search on keypress
-        -   Pagination (intersection Observer to fetch more results)
         -   Implement debounce to delay API calls on keypress in our input field
+        -   Pagination (intersection Observer to fetch more results)
+        -   Edit mode (Toggle State)
+        -   Allow actions in edit mode (select card, select all cards, unselect all cards, copy cards, delete card)
+        -   Prevent fetch more users in edit mode
+        -   Hide actions in non edit mode
 
 -   Read Github API docs
 
@@ -169,12 +168,8 @@ Roadmap:
     }
     ```
 
-    -   Format response to keep login, id, avatar_url, html_url
-
     -   API rate limit (returned HTTP headers) : https://docs.github.com/en/rest/overview/resources-in-the-rest-api
 
         > X-RateLimit-Limit: Request limit per hour
 
         > X-RateLimit-Remaining : The number of requests left for the time window
-
-    -   Add JSDoc markup to annotate code files
