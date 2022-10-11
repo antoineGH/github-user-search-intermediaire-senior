@@ -32,6 +32,7 @@ export const UserTable = ({
 
 	const lastUserElement = useCallback(
 		(node: any) => {
+			if (!editOn) return
 			if (isLoading) return
 			if (!hasMore) return
 			if (observer.current) observer.current.disconnect()
@@ -46,7 +47,7 @@ export const UserTable = ({
 			if (node) observer.current.observe(node)
 		},
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-		[hasMore]
+		[hasMore, editOn]
 	)
 
 	return (

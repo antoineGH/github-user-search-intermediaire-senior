@@ -20,7 +20,7 @@ function App() {
 	} = useGithub()
 
 	const [selectedID, setSelectedID] = useState<number[]>([])
-	const [editOn, setEditOn] = useState<boolean>(false)
+	const [editOn, setEditOn] = useState<boolean>(true)
 	console.log(selectedID)
 
 	const addUserID = (userID: number): void => {
@@ -42,7 +42,6 @@ function App() {
 	}
 
 	const handleCopyUsers = (): void => {
-		console.log('handleCopyUsers')
 		if (selectedID.length > 0) {
 			copyUsers(selectedID)
 			setSelectedID([])
@@ -61,7 +60,6 @@ function App() {
 	}
 
 	const handleSelectAll = (): void => {
-		console.log('handleSelectAll')
 		users.forEach((user) => {
 			setSelectedID((currentState) => [...currentState, user.id])
 		})
