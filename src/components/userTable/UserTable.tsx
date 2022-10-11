@@ -11,9 +11,9 @@ type Props = {
 	hasError: boolean
 	hasResult: boolean
 	editOn: boolean
+	selectedID: number[]
 	handleLoadMoreUsers: () => void
 	selectUserID: (userID: number, action: ActionType) => void
-	selectedID: number[]
 }
 
 export const UserTable = ({
@@ -24,17 +24,15 @@ export const UserTable = ({
 	hasError,
 	hasResult,
 	editOn,
+	selectedID,
 	handleLoadMoreUsers,
 	selectUserID,
-	selectedID,
 }: Props): JSX.Element => {
 	const observer = useRef<IntersectionObserver | null>(null)
 
 	const lastUserElement = useCallback(
 		(node: any) => {
-			if (!editOn) return
-			if (isLoading) return
-			if (!hasMore) return
+			if (!editOn || !hasMore || isLoading) return
 			if (observer.current) observer.current.disconnect()
 			observer.current = new IntersectionObserver((entries) => {
 				if (entries[0].isIntersecting) {
@@ -59,20 +57,18 @@ export const UserTable = ({
 					<span className='material-icons icon-loading'>loop</span>
 				</div>
 			) : (
-				<>
-					<div className='user-cards'>
-						{users.map((user, count) => (
-							<UserCard
-								lastUserElement={lastUserElement}
-								key={count}
-								user={user}
-								editOn={editOn}
-								selectUserID={selectUserID}
-								selectedID={selectedID}
-							/>
-						))}
-					</div>
-				</>
+				<div className='user-cards'>
+					{users.map((user) => (
+						<UserCard
+							lastUserElement={lastUserElement}
+							key={user.id}
+							user={user}
+							editOn={editOn}
+							selectUserID={selectUserID}
+							selectedID={selectedID}
+						/>
+					))}
+				</div>
 			)}
 		</div>
 	)

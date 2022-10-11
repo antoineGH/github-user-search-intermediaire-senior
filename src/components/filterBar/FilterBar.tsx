@@ -2,37 +2,29 @@ import { useEffect, useState } from 'react'
 import './style.css'
 
 type Props = {
+	editOn: boolean
+	selectedID: number[]
 	handleDeleteUsers: () => void
 	handleCopyUsers: () => void
 	handleToggleEdit: () => void
-	editOn: boolean
-	selectedID: number[]
 	handleSelectAll: () => void
 	handleUnSelectAll: () => void
 }
 
 export const FilterBar = ({
+	editOn,
+	selectedID,
 	handleDeleteUsers,
 	handleCopyUsers,
 	handleToggleEdit,
-	editOn,
-	selectedID,
 	handleSelectAll,
 	handleUnSelectAll,
 }: Props): JSX.Element => {
-	const countSelectedElements = (): number => {
-		if (selectedID.length) return selectedID.length
-		return 0
-	}
-
 	const [isChecked, setIsChecked] = useState(false)
+	const countSelectedElements = selectedID.length
 
 	const handleChecked = () => {
-		if (isChecked) {
-			handleUnSelectAll()
-		} else {
-			handleSelectAll()
-		}
+		isChecked ? handleUnSelectAll() : handleSelectAll()
 		setIsChecked((prevState) => !prevState)
 	}
 
@@ -53,7 +45,7 @@ export const FilterBar = ({
 				<div className='action'>
 					<div className='action-left'>
 						<input type='checkbox' id='scales' name='scales' onChange={handleChecked} checked={isChecked} />
-						<p className='selected'>{countSelectedElements()} elements selected</p>
+						<p className='selected'>{countSelectedElements} elements selected</p>
 					</div>
 
 					<div className='action-right'>

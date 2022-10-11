@@ -5,16 +5,16 @@ type Props = {
 	user: User
 	lastUserElement: any
 	editOn: boolean
-	selectUserID: (userID: number, action: ActionType) => void
 	selectedID: number[]
+	selectUserID: (userID: number, action: ActionType) => void
 }
 
-export const UserCard = ({ user, lastUserElement, editOn, selectUserID, selectedID }: Props): JSX.Element => {
-	const isChecked = () => selectedID.includes(user.id)
+export const UserCard = ({ user, lastUserElement, editOn, selectedID, selectUserID }: Props): JSX.Element => {
+	const isChecked = selectedID.includes(user.id)
 
-	const handleCard = (e: any): void => {
+	const handleCard = (e: React.ChangeEvent<HTMLInputElement>): void => {
 		e.persist()
-		if (isChecked()) {
+		if (isChecked) {
 			selectUserID(user.id, ActionType.remove)
 		} else {
 			selectUserID(user.id, ActionType.add)
@@ -29,8 +29,8 @@ export const UserCard = ({ user, lastUserElement, editOn, selectUserID, selected
 						type='checkbox'
 						id='scales'
 						name='scales'
-						onChange={(e) => handleCard(e)}
-						checked={isChecked()}
+						onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleCard(e)}
+						checked={isChecked}
 					/>
 				</div>
 			)}

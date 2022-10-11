@@ -5,7 +5,7 @@ import { TopBar } from './components/topBar/TopBar'
 import { UserTable } from './components/userTable/UserTable'
 import './App.css'
 
-function App() {
+const App = () => {
 	const [selectedID, setSelectedID] = useState<number[]>([])
 	const [editOn, setEditOn] = useState<boolean>(true)
 	const {
@@ -32,11 +32,8 @@ function App() {
 
 	const selectUserID = (userID: number, action: ActionType): void => {
 		if (!userID) return
-		if (action === 'add') {
-			addUserID(userID)
-		} else {
-			removeUserID(userID)
-		}
+		if (action === 'add') addUserID(userID)
+		if (action === 'remove') removeUserID(userID)
 	}
 
 	const handleCopyUsers = (): void => {
@@ -55,11 +52,8 @@ function App() {
 
 	const handleToggleEdit = (): void => setEditOn((prevState) => !prevState)
 
-	const handleSelectAll = (): void => {
-		users.forEach((user) => {
-			setSelectedID((currentState) => [...currentState, user.id])
-		})
-	}
+	const handleSelectAll = (): void =>
+		users.forEach((user) => setSelectedID((currentState) => [...currentState, user.id]))
 
 	const handleUnSelectAll = (): void => setSelectedID([])
 
@@ -87,7 +81,6 @@ function App() {
 				selectUserID={selectUserID}
 				selectedID={selectedID}
 			/>
-			{hasMore && <button onClick={handleLoadMoreUsers}>Load More</button>}
 		</div>
 	)
 }

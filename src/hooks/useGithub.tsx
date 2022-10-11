@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useDebounce } from './useDebounce'
-import { User } from '../types/users'
 import { usePreviousValue } from './usePreviousValue'
+import { User } from '../types/users'
 import { fetchUser } from '../api/github'
 
 type InitialState = {
@@ -104,7 +104,7 @@ export const useGithub = (): {
 		setState((currentState) => ({ ...currentState, users: [...elToCopy, ...currentState.users] }))
 	}
 
-	const handleChangeUsername = (value: string) => setInputValue(value)
+	const handleChangeUsername = (value: string): void => setInputValue(value)
 
 	return { ...state, hasResult, hasError, handleChangeUsername, handleLoadMoreUsers, deleteUsers, copyUsers }
 }
