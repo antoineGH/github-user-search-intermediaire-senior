@@ -117,6 +117,7 @@ User Github Result – Mobile ![Components Screenshot](https://github.com/antoin
 -   Check Responsivness (using CSS media queries)
 -   Identify State and where it should live
 -   Create customHook to handle external logic (pagination, debounce, loading & error state)
+-   Use Jest to test UI components
 -   Add Up functionnalities
 
         -   API call
