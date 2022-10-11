@@ -36,7 +36,7 @@ export const FilterBar = ({
 	return (
 		<div className='Filter'>
 			<div className='edit'>
-				<button className='button-secondary' onClick={handleToggleEdit}>
+				<button className='button-secondary' name='button-secondary' onClick={handleToggleEdit}>
 					{editOn ? 'Edit' : 'Stop Edit'}
 					<span className='material-icons icon-grey icon-edit'>{editOn ? 'edit' : 'close'}</span>
 				</button>

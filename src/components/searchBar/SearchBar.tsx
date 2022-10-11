@@ -5,7 +5,7 @@ type Props = {
 }
 
 export const SearchBar = ({ handleChangeUsername }: Props): JSX.Element => (
-	<div className='Search'>
+	<div className='Search' id='Search'>
 		<input
 			type='text'
 			id='username'

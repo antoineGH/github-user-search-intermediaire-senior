@@ -1,7 +1,9 @@
 import { useState } from 'react'
 import { ActionType, User } from '../types/users'
 
-type UserEditModeOutput = {
+export const useEditMode = (
+	users: User[]
+): {
 	editOn: boolean
 	selectedID: number[]
 	setSelectedID: (num: number[]) => void
@@ -9,9 +11,7 @@ type UserEditModeOutput = {
 	handleToggleEdit: () => void
 	handleSelectAll: () => void
 	handleUnSelectAll: () => void
-}
-
-export const useEditMode = (users: User[]): UserEditModeOutput => {
+} => {
 	const [editOn, setEditOn] = useState<boolean>(true)
 	const [selectedID, setSelectedID] = useState<number[]>([])
 
@@ -21,8 +21,8 @@ export const useEditMode = (users: User[]): UserEditModeOutput => {
 
 	const selectUserID = (userID: number, action: ActionType): void => {
 		if (!userID) return
-		if (action === 'add') addUserID(userID)
-		if (action === 'remove') removeUserID(userID)
+		if (action === ActionType.add) addUserID(userID)
+		if (action === ActionType.remove) removeUserID(userID)
 	}
 
 	const removeUserID = (userID: number): void => {

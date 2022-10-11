@@ -4,7 +4,7 @@ import { TopBar } from './components/topBar/TopBar'
 import { UserTable } from './components/userTable/UserTable'
 import './App.css'
 
-const App = () => {
+export const App = () => {
 	const {
 		users,
 		hasMore,
