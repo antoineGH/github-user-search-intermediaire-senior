@@ -1,11 +1,13 @@
+import { useState } from 'react'
 import { useGithub } from './hooks/useGithub'
+import { ActionType } from './types/users'
 import { TopBar } from './components/topBar/TopBar'
 import { UserTable } from './components/userTable/UserTable'
 import './App.css'
-import { useState } from 'react'
-import { ActionType } from './types/users'
 
 function App() {
+	const [selectedID, setSelectedID] = useState<number[]>([])
+	const [editOn, setEditOn] = useState<boolean>(true)
 	const {
 		users,
 		hasMore,
@@ -18,10 +20,6 @@ function App() {
 		deleteUsers,
 		copyUsers,
 	} = useGithub()
-
-	const [selectedID, setSelectedID] = useState<number[]>([])
-	const [editOn, setEditOn] = useState<boolean>(true)
-	console.log(selectedID)
 
 	const addUserID = (userID: number): void => {
 		if (!selectedID.includes(userID)) setSelectedID((prevState) => [...prevState, userID])
@@ -55,9 +53,7 @@ function App() {
 		}
 	}
 
-	const handleToggleEdit = (): void => {
-		setEditOn((prevState) => !prevState)
-	}
+	const handleToggleEdit = (): void => setEditOn((prevState) => !prevState)
 
 	const handleSelectAll = (): void => {
 		users.forEach((user) => {
@@ -65,9 +61,7 @@ function App() {
 		})
 	}
 
-	const handleUnSelectAll = (): void => {
-		setSelectedID([])
-	}
+	const handleUnSelectAll = (): void => setSelectedID([])
 
 	return (
 		<div className='App'>

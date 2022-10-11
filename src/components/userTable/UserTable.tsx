@@ -56,7 +56,7 @@ export const UserTable = ({
 				<div className='no-result'>
 					<p>{error}</p>
 				</div>
-			) : isLoading ? (
+			) : isLoading && users.length === 0 ? (
 				<div className='no-result'>
 					<span className='material-icons icon-loading'>loop</span>
 				</div>
