@@ -16,8 +16,6 @@
 
 Create a search input text where users can type in and get results straight away, without ENTER keypress or submit button required. Results will list Github users like the mock below, and must be responsive.
 
-![Aim](https://user-images.githubusercontent.com/42266363/181709007-eabaf8ff-e298-44db-9213-bb515c2e0757.png)
-
 ## 2. References<a name="references"></a>
 
 -   React - https://reactjs.org/
@@ -47,8 +45,8 @@ Create a search input text where users can type in and get results straight away
 
 ### Edit Mode
 
--   Edit Mode On: Allow to select cards, Allow to select all, Display related actions (duplicate and delete)
--   Edit Mode Off: Disable select cards, Hide actions (select all, duplicate and delete)
+-   Edit Mode Off: Disable select cards, Hide actions (select all, duplicate and delete), allow fetching more user (pagination)
+-   Edit Mode On: Allow to select cards, Allow to select all, Display related actions (duplicate and delete), prevent from fetching more API users.
 
 ## 4. Technologies<a name="tech"></a>
 
@@ -74,13 +72,13 @@ Communication is assured to external interfaces. The system is connected to GitH
 ## 6. Installation instructions<a name="installation"></a>
 
 ```shell
-git clone https://github.com/antoineGH/github-user-search-intermediaire-senior.git
+git clone https://github.com/antoineGH/github_user_search.git
 ```
 
 Navigate to project directory.
 
 ```shell
-cd github-user-search-intermediaire-senior
+cd github_user_search
 ```
 
 Install node modules.
