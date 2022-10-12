@@ -93,6 +93,12 @@ Run the app in development mode. Open http://localhost:3000 to view it in the br
 npm start
 ```
 
+Run UI tests.
+
+```shell
+npm test
+```
+
 ## 7. Project structure<a name="structure"></a>
 
 <br>
